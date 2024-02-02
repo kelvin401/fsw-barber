@@ -32,9 +32,7 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
                   currency: "BRL",
                 }).format(Number(service.price))}
               </p>
-              <Button className="text-primary" variant="secondary">
-                Reservar
-              </Button>
+              <Button variant="secondary">Reservar</Button>
             </div>
           </div>
         </div>

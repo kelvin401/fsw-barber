@@ -4,7 +4,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Barbershop } from "@prisma/client";
 import { Button } from "@/app/_components/ui/button";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
+import {
+  ChevronLeftIcon,
+  MapPinIcon,
+  MenuIcon,
+  StarIcon,
+  VideoIcon,
+} from "lucide-react";
 
 interface BarbershopInfoProps {
   barbershop: Barbershop;
@@ -58,6 +64,11 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
         <div className="flex items-center gap-1">
           <StarIcon className="mr-2 text-primary" size={18} />
           <p className="text-sm">5,0 (899 avaliações)</p>
+        </div>
+
+        <div className="flex items-center gap-1">
+          <VideoIcon className="mr-2 text-primary" size={18} />
+          <a href="https://youtu.be/LTSBTaxEkNg?t=3827">Ver video</a>
         </div>
       </div>
     </div>
