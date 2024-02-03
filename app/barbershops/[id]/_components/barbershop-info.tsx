@@ -84,9 +84,11 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
           <p className="text-sm">5,0 (899 avaliações)</p>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-xs">
           <VideoIcon className="mr-2 text-primary" size={18} />
-          <a href="https://youtu.be/LTSBTaxEkNg?t=3827">Ver video</a>
+          <a href="https://www.youtube.com/watch?v=Ps7qU8qr4bQ&ab_channel=FelipeRocha%E2%80%A2dicasparadevs">
+            <p className="text-sm">Ver video</p>
+          </a>
         </div>
       </div>
     </div>
