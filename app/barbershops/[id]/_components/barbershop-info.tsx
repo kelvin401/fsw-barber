@@ -11,6 +11,8 @@ import {
   StarIcon,
   VideoIcon,
 } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/app/_components/ui/sheet";
+import SideMenu from "@/app/_components/side-menu";
 
 interface BarbershopInfoProps {
   barbershop: Barbershop;
@@ -42,6 +44,22 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
         >
           <MenuIcon />
         </Button>
+
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-4 top-4 z-50"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent className="p-0">
+            <SideMenu />
+          </SheetContent>
+        </Sheet>
 
         <Image
           src={barbershop.imageUrl}
