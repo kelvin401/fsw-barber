@@ -1,10 +1,11 @@
-import { format } from "date-fns";
-import Header from "../_components/header";
-import { ptBR } from "date-fns/locale/pt-BR";
-import Search from "./_components/search";
-import BookingItem from "../_components/booking-item";
-import { db } from "../_lib/prisma";
-import BarbershopItem from "./_components/barbershop-item";
+import { format } from 'date-fns';
+import Header from '../_components/header';
+import { ptBR } from 'date-fns/locale/pt-BR';
+import Search from './_components/search';
+import BookingItem from '../_components/booking-item';
+import { db } from '../_lib/prisma';
+import BarbershopItem from './_components/barbershop-item';
+import { VideoIcon } from 'lucide-react';
 
 export default async function Home() {
   // chamar barbearias
@@ -21,17 +22,22 @@ export default async function Home() {
             locale: ptBR,
           })}
         </p>
-
+        <div className="mt-4 flex items-center gap-1 text-xs">
+          <VideoIcon className="mr-2 text-primary" size={18} />
+          <a href="https://youtu.be/wyFPX6WBaYA?t=1588" target="_blank">
+            <p className="text-sm">Voltar para aula</p>
+          </a>
+        </div>
         <div className="mt-6">
           <Search />
         </div>
 
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <h2 className="pb-2 text-xs font-bold uppercase text-gray-400">
             Agendamentos
           </h2>
-          <BookingItem />
-        </div>
+          <BookingItem booking={booking} />
+        </div> */}
 
         <div>
           <h2 className="py-5 pb-2 text-xs font-bold uppercase text-gray-400">

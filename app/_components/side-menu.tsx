@@ -1,23 +1,23 @@
-"use client";
-import { Avatar, AvatarImage } from "./ui/avatar";
+'use client';
+import { Avatar, AvatarImage } from './ui/avatar';
 import {
   LogOutIcon,
   UserIcon,
   LogInIcon,
   HomeIcon,
   CalendarIcon,
-} from "lucide-react";
-import { Button } from "./ui/button";
-import { SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+} from 'lucide-react';
+import { Button } from './ui/button';
+import { SheetContent, SheetHeader, SheetTitle } from './ui/sheet';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const SideMenu = () => {
   const { data } = useSession();
 
   // o parametro google evita a tela de signIn with google e já
   // avança para a tela de consentimento.
-  const handleLogInClick = () => signIn("google");
+  const handleLogInClick = () => signIn('google');
 
   const handleLogOutClick = () => signOut();
 
@@ -31,7 +31,7 @@ const SideMenu = () => {
         <div className="flex items-center justify-between px-5 py-6">
           <div className="flex items-center gap-3 ">
             <Avatar>
-              <AvatarImage src={data.user?.image ?? ""} />
+              <AvatarImage src={data.user?.image ?? ''} />
             </Avatar>
 
             <h2 className="font-bold">{data.user.name}</h2>
@@ -78,7 +78,7 @@ const SideMenu = () => {
             onClick={handleLogInClick}
             asChild
           >
-            <Link href="/">
+            <Link href="/bookings">
               <CalendarIcon className="mr-2" size={18} />
               Agendamentos
             </Link>
