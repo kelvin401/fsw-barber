@@ -1,11 +1,11 @@
-"use client";
-import Image from "next/image";
-import { Card, CardContent } from "@/app/_components/ui/card";
-import { Barbershop } from "@prisma/client";
-import { Button } from "@/app/_components/ui/button";
-import { Badge } from "@/app/_components/ui/badge";
-import { StarIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+'use client';
+import Image from 'next/image';
+import { Card, CardContent } from '@/app/_components/ui/card';
+import { Barbershop } from '@prisma/client';
+import { Button } from '@/app/_components/ui/button';
+import { Badge } from '@/app/_components/ui/badge';
+import { StarIcon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface BarbershopItemProps {
   barbershop: Barbershop;
@@ -20,7 +20,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
 
   return (
     <Card className="min-w-[167px] max-w-[167px] rounded-2xl">
-      <CardContent className=" px-1 pb-0">
+      <CardContent className="px-1 pb-0">
         <div className="relative h-[159px] w-full px-1">
           <div className="absolute left-2 top-2 z-50 ">
             <Badge
@@ -35,7 +35,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
             src={barbershop.imageUrl}
             alt={barbershop.name}
             style={{
-              objectFit: "cover",
+              objectFit: 'cover',
             }}
             fill
             className="rounded-2xl"
@@ -43,7 +43,7 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
         </div>
 
         <div className="px-3 pb-3">
-          <h2 className="overflow-hidden text-ellipsis text-nowrap font-bold">
+          <h2 className="mt-3 overflow-hidden text-ellipsis text-nowrap font-bold">
             {barbershop.name}
           </h2>
           <p className="overflow-hidden text-ellipsis text-nowrap text-sm text-gray-400">
