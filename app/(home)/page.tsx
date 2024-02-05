@@ -47,8 +47,11 @@ export default async function Home() {
         </p>
         <div className="mt-4 flex items-center gap-1 text-xs">
           <VideoIcon className="mr-2 text-primary" size={18} />
-          <a href="https://youtu.be/wyFPX6WBaYA?t=1588" target="_blank">
-            <p className="text-sm">Voltar para aula</p>
+          <a
+            href="https://www.youtube.com/watch?v=wMgWS_krna8&ab_channel=FelipeRocha%E2%80%A2dicasparadevs"
+            target="_blank"
+          >
+            <p className="text-sm">Ver aular 05 </p>
           </a>
         </div>
         <div className="mt-6">
