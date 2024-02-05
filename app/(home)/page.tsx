@@ -10,24 +10,26 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
 export default async function Home() {
-  // chamar barbearias
-  const barbershops = await db.barbershop.findMany({});
-
   const session = await getServerSession(authOptions);
 
-  const bookings = await db.booking.findMany({
-    where: {
-      userId: (session?.user as any).id,
-    },
-    include: {
-      service: true,
-      barbershop: true,
-    },
-  });
+  const [barbershops, confirmedBookings] = await Promise.all([
+    db.barbershop.findMany({}),
+    session?.user
+      ? db.booking.findMany({
+          where: {
+            userId: (session.user as any).id,
+            date: {
+              gte: new Date(),
+            },
+          },
+          include: {
+            service: true,
+            barbershop: true,
+          },
+        })
+      : Promise.resolve([]),
+  ]);
 
-  const confirmedBookings = bookings.filter((booking) =>
-    isFuture(booking.date),
-  );
   return (
     <div className="w-full">
       <Header />
@@ -56,7 +58,7 @@ export default async function Home() {
                 Agendamentos
               </h2>
 
-              <div className="flex flex-col gap-4 ">
+              <div className="mt-6 flex gap-3 overflow-x-auto pr-5 [&::-webkit-scrollbar]:hidden">
                 {confirmedBookings.map((booking) => (
                   <BookingItem key={booking.id} booking={booking} />
                 ))}
