@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <Card>
+    <Card className="rounded-none">
       <CardContent className="flex items-center justify-between px-5 py-8">
         <Link href="/">
           <Image src="/logo.png" alt="FSW Barber" height={22} width={120} />
