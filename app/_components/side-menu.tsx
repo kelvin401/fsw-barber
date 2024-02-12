@@ -1,25 +1,24 @@
 'use client';
+
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { SheetHeader, SheetTitle } from './ui/sheet';
 import { Avatar, AvatarImage } from './ui/avatar';
+import { Button } from './ui/button';
 import {
+  CalendarIcon,
+  HomeIcon,
+  LogInIcon,
   LogOutIcon,
   UserIcon,
-  LogInIcon,
-  HomeIcon,
-  CalendarIcon,
 } from 'lucide-react';
-import { Button } from './ui/button';
-import { SheetContent, SheetHeader, SheetTitle } from './ui/sheet';
-import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 const SideMenu = () => {
   const { data } = useSession();
 
-  // o parametro google evita a tela de signIn with google e já
-  // avança para a tela de consentimento.
-  const handleLogInClick = () => signIn('google');
+  const handleLogoutClick = () => signOut();
 
-  const handleLogOutClick = () => signOut();
+  const handleLoginClick = () => signIn('google');
 
   return (
     <>
@@ -29,7 +28,7 @@ const SideMenu = () => {
 
       {data?.user ? (
         <div className="flex items-center justify-between px-5 py-6">
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-center gap-3">
             <Avatar>
               <AvatarImage src={data.user?.image ?? ''} />
             </Avatar>
@@ -37,8 +36,8 @@ const SideMenu = () => {
             <h2 className="font-bold">{data.user.name}</h2>
           </div>
 
-          <Button variant="secondary" size="icon" onClick={handleLogOutClick}>
-            <LogOutIcon />
+          <Button variant="secondary" size="icon">
+            <LogOutIcon onClick={handleLogoutClick} />
           </Button>
         </div>
       ) : (
@@ -50,7 +49,7 @@ const SideMenu = () => {
           <Button
             variant="secondary"
             className="w-full justify-start"
-            onClick={handleLogInClick}
+            onClick={handleLoginClick}
           >
             <LogInIcon className="mr-2" size={18} />
             Fazer Login
@@ -59,27 +58,17 @@ const SideMenu = () => {
       )}
 
       <div className="flex flex-col gap-3 px-5">
-        <Button
-          variant="outline"
-          className="w-full justify-start"
-          onClick={handleLogInClick}
-          asChild
-        >
+        <Button variant="outline" className="justify-start" asChild>
           <Link href="/">
-            <HomeIcon className="mr-2" size={18} />
+            <HomeIcon size={18} className="mr-2" />
             Início
           </Link>
         </Button>
 
         {data?.user && (
-          <Button
-            variant="outline"
-            className="w-full justify-start"
-            onClick={handleLogInClick}
-            asChild
-          >
+          <Button variant="outline" className="justify-start" asChild>
             <Link href="/bookings">
-              <CalendarIcon className="mr-2" size={18} />
+              <CalendarIcon size={18} className="mr-2" />
               Agendamentos
             </Link>
           </Button>

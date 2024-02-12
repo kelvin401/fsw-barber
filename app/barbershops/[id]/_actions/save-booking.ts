@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { db } from '@/app/_lib/prisma';
-import { revalidatePath } from 'next/cache';
+import { db } from "@/app/_lib/prisma";
+import { revalidatePath } from "next/cache";
 
 interface SaveBookingParams {
   barbershopId: string;
@@ -9,16 +9,17 @@ interface SaveBookingParams {
   userId: string;
   date: Date;
 }
+
 export const saveBooking = async (params: SaveBookingParams) => {
   await db.booking.create({
     data: {
-      barbershopId: params.barbershopId,
       serviceId: params.serviceId,
       userId: params.userId,
       date: params.date,
+      barbershopId: params.barbershopId,
     },
   });
 
-  revalidatePath('/');
-  revalidatePath('/bookings');
+  revalidatePath("/");
+  revalidatePath("/bookings");
 };
